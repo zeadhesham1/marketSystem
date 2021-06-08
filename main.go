@@ -15,17 +15,24 @@ type Product struct {
 	quantity int
 }
 
-func inputFloat(message string) float64 {
+//fadl validation lma num tb2a b 0 e3ny d5lt 7aga 8er el arqam
+func inputNumber(message string) float64 {
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Print(message)
+	fmt.Printf(" %v :", message)
 	input, _ := reader.ReadString('\n')
 	num, _ := strconv.ParseFloat(strings.TrimSpace(input), 64)
-	//fadl validation lma num tb2a b 0 e3ny d5lt 7aga 8er el arqam
 	return num
 
 }
 
-//
+func inputString(message string) string {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Printf(" %v :", message)
+	input, _ := reader.ReadString('\n')
+	return input
+
+}
+
 func printProduct(aproduct Product) {
 	fmt.Printf("%v      %v    %v    %v\n", aproduct.id, aproduct.name, aproduct.price, aproduct.quantity)
 }
@@ -35,6 +42,14 @@ func printAllProducts(productArr []Product) {
 	for p := range productArr {
 		printProduct(productArr[p])
 	}
+}
+
+func addProduct() Product {
+	var newProduct Product
+	newProduct.name = inputString("enter Product name:")
+	newProduct.price = float32(inputNumber("enter Product price:"))
+	newProduct.quantity = int(inputNumber("enter Product quantity:"))
+	return newProduct
 }
 
 func main() {
@@ -54,8 +69,9 @@ func main() {
 	case 1:
 		printAllProducts(productArray)
 	case 2:
-		fmt.Print("3. find existing product\n")
+		productArray = append(productArray, addProduct())
 
+		printAllProducts(productArray)
 	case 3:
 		fmt.Print("3. find existing product\n")
 	case 4:
@@ -81,6 +97,6 @@ func chooseFromMenu() int {
 	fmt.Print("4. edit existing product\n")
 	fmt.Print("5. delete existing product\n ")
 	fmt.Print("6. exit\n")
-	input = int(inputFloat("enter your choice :"))
+	input = int(inputNumber("enter your choice :"))
 	return input
 }
