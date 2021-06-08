@@ -1,7 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strconv"
+	"strings"
 )
 
 type Product struct {
@@ -9,6 +13,16 @@ type Product struct {
 	name     string
 	price    float32
 	quantity int
+}
+
+func inputFloat(message string) float64 {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print(message)
+	input, _ := reader.ReadString('\n')
+	num, _ := strconv.ParseFloat(strings.TrimSpace(input), 64)
+	//fadl validation lma num tb2a b 0 e3ny d5lt 7aga 8er el arqam
+	return num
+
 }
 
 //
@@ -67,8 +81,6 @@ func chooseFromMenu() int {
 	fmt.Print("4. edit existing product\n")
 	fmt.Print("5. delete existing product\n ")
 	fmt.Print("6. exit\n")
-	fmt.Print("enter your choice :")
-	// int validation required
-	fmt.Scanln(&input)
+	input = int(inputFloat("enter your choice :"))
 	return input
 }
