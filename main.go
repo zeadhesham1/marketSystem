@@ -24,11 +24,15 @@ func printAllProducts(productArr []Product) {
 }
 
 func main() {
+
 	aproduct1 := Product{2, "cheese", 3.4, 5}
 	aproduct6 := Product{7, "Mushroom", 8.9, 10}
 	aproduct11 := Product{12, "milk", 13.14, 15}
 	aproduct16 := Product{17, "water", 18.19, 20}
 	productArray := []Product{aproduct1, aproduct6, aproduct11, aproduct16}
+
+	//var repeatAnswer byte
+	//for repeatAnswer != 'n' && repeatAnswer != 'N' {
 
 	menuChoice := chooseFromMenu()
 
@@ -43,10 +47,15 @@ func main() {
 	case 4:
 		fmt.Print("4. edit existing product\n")
 	case 5:
-		fmt.Print("5. delete existing product\n ")
+		fmt.Print("5. delete existing product\n")
 	case 6:
 		fmt.Print("6. exit\n")
 	}
+	//byd5lny f infinte loop !!
+	//fmt.Print("press N to exit, any other key to go back to main menu:")
+	//fmt.Scanln(repeatAnswer)
+
+	//}
 
 }
 func chooseFromMenu() int {
