@@ -15,13 +15,16 @@ type Product struct {
 	quantity int
 }
 
-//fadl validation lma num tb2a b 0 e3ny d5lt 7aga 8er el arqam
 func inputNumber(message string) float64 {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Printf(" %v :", message)
 	input, _ := reader.ReadString('\n')
 	num, _ := strconv.ParseFloat(strings.TrimSpace(input), 64)
-	return num
+	if num != 0 {
+		return num
+	} else {
+		return inputNumber(message)
+	}
 
 }
 
